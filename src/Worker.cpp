@@ -32,7 +32,7 @@ void Worker::join() {
 	m_thread.join();
 	m_totalTime.stop();
 
-	// If the thread member was joined, then these two timers must be stopped.
+	// If the thread member has been joined, then these two timers must be stopped.
 	assert(m_workTime.running() == false && "Work time isn't stopped!");
 	assert(m_sleepTime.running() == false && "Sleep time isn't stopped!");
 }

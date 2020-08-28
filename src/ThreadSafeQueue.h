@@ -1,14 +1,14 @@
 #ifndef _THREAD_SAFE_QUEUE_HEADER_
 #define _THREAD_SAFE_QUEUE_HEADER_
 
-#include <mutex>				// Mutex locks for the head and the tail.
-#include <memory>				// Smart pointers.
-#include <limits>				// The maximum value of the capacity.
-#include <atomic>				// Number of elements in the queue.
-#include <utility>				// std::forward<>
-#include <stdexcept>			// Exceptions.
-#include <type_traits>			// Basic type traits.
-#include "CountedMutex.h"		// Mutex statistics.
+#include <mutex>		// Mutex locks for the head and the tail.
+#include <memory>		// Smart pointers.
+#include <limits>		// The maximum value of the capacity.
+#include <atomic>		// Number of elements in the queue.
+#include <utility>		// std::forward<>
+#include <stdexcept>		// Exceptions.
+#include <type_traits>		// Basic type traits.
+#include "CountedMutex.h"	// Mutex statistics.
 
 template <typename T>
 class ThreadSafeQueue {
@@ -271,7 +271,7 @@ inline typename ThreadSafeQueue<T>::Node* ThreadSafeQueue<T>::tryPopHead() {
 
 	{
 		// m_size is atomic, but there is a condition variable in the push() method,
-		// which whecks m_size and needs to be synchronized through a mutex lock.
+		// which checks m_size and needs to be synchronized through a mutex lock.
 		std::lock_guard<mtx_t> tailLock(m_tailMtx);
 
 		// Decrease the number of elements in the queue.

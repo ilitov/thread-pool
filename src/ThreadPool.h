@@ -3,8 +3,8 @@
 
 #include "ThreadSafeQueue.h"	// Work queues.
 #include "FunctionWrapper.h"	// Task wrapper.
-#include "Worker.h"				// Thread wrapper.
-#include "CountedMutex.h"		// Mutex wrapper.
+#include "Worker.h"		// Thread wrapper.
+#include "CountedMutex.h"	// Mutex wrapper.
 
 #include <vector>
 #include <atomic>
